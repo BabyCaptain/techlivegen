@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="TechLiveGen — tech news, guides, reviews, and live insights." />
+  <title>TechLiveGen — Welcome</title>
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.56);
+      --line: rgba(255,255,255,.14);
+      --brand: #7c5cff;
+      --brand2: #37d7ff;
+      --ok: #2fe39a;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(900px 550px at 10% -10%, rgba(124,92,255,.45), transparent 60%),
+        radial-gradient(900px 550px at 90% 0%, rgba(55,215,255,.30), transparent 55%),
+        radial-gradient(700px 450px at 50% 110%, rgba(47,227,154,.20), transparent 55%),
+        linear-gradient(180deg, #070a14, var(--bg));
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* subtle animated noise */
+    .noise{
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(11,16,32,.78), rgba(11,16,32,.45));
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .logo{
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      background:
+        radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 12px 30px rgba(124,92,255,.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:-30%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.22), transparent);
+      transform: rotate(10deg);
+      animation: shine 5.5s linear infinite;
+    }
+    @keyframes shine{
+      0%{ transform: translateX(-35%) rotate(10deg); }
+      100%{ transform: translateX(35%) rotate(10deg); }
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .menu a{
+      padding: 9px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: .2s ease;
+      font-size: 14px;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .cta{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-left: 4px;
+    }
+    .btn{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 650;
+      font-size: 14px;
+      transition: .2s ease;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    .btn.primary{
+      border-color: rgba(124,92,255,.55);
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(55,215,255,.75));
+      box-shadow: 0 16px 40px rgba(124,92,255,.18);
+    }
+    .btn.primary:hover{ filter: brightness(1.03); }
+    .btn .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.14);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 66px 0 34px;
+      position: relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pulse{
+      width: 9px; height: 9px;
+      border-radius: 999px;
+      background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(47,227,154,.4);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(47,227,154,.45);}
+      70%{ box-shadow: 0 0 0 12px rgba(47,227,154,0);}
+      100%{ box-shadow: 0 0 0 0 rgba(47,227,154,0);}
+    }
+
+    h1{
+      margin: 16px 0 10px;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 62ch;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stats{
+      margin-top: 22px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .chip{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      padding: 10px 12px;
+      border-radius: 999px;
+      display:inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .chip strong{ color: var(--text); font-weight: 750; }
+
+    /* Right card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-head{
+      padding: 18px 18px 12px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .card-head h3{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .2px;
+      color: rgba(255,255,255,.85);
+      font-weight: 750;
+    }
+    .tag{
+      font-size: 12px;
+      color: rgba(255,255,255,.7);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      white-space: nowrap;
+    }
+    .card-body{ padding: 16px 18px 18px; }
+    .mini{
+      display:grid;
+      gap: 12px;
+    }
+    .mini-item{
+      padding: 12px 12px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+      display:flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .icon{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+    .mini-item h4{
+      margin: 1px 0 4px;
+      font-size: 14px;
+    }
+    .mini-item p{
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Sections */
+    section{ padding: 34px 0; }
+    .section-title{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section-title h2{
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -.3px;
+    }
+    .section-title p{
+      margin: 0;
+      color: var(--muted2);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .panel{
+      border: 1px solid rgba(255,255,255,.14);
+      background: var(--panel);
+      border-radius: var(--radius2);
+      padding: 18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.20);
+    }
+    .panel h3{ margin: 0 0 6px; font-size: 16px; }
+    .panel p{ margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+    .panel .meta{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,.65);
+      font-size: 12px;
+    }
+    .pill{
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    /* Forms */
+    form{ display:flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    input, textarea{
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 12px;
+      outline: none;
+      font-size: 14px;
+      flex: 1 1 220px;
+    }
+    textarea{ min-height: 120px; resize: vertical; flex-basis: 100%; }
+    input::placeholder, textarea::placeholder{ color: rgba(255,255,255,.45); }
+    input:focus, textarea:focus{ border-color: rgba(124,92,255,.55); box-shadow: 0 0 0 4px rgba(124,92,255,.12); }
+    .small{
+      color: var(--muted2);
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer{
+      padding: 24px 0 44px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.70);
+      background: rgba(0,0,0,.12);
+    }
+    .foot{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .foot a{ color: rgba(255,255,255,.70); }
+    .foot a:hover{ color: rgba(255,255,255,.92); }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .menu{ display:none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top">
+          <span class="logo" aria-hidden="true"></span>
+          <span>TechLiveGen<span style="opacity:.55">.net</span></span>
+        </a>
+
+        <div class="menu" role="navigation">
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#services">Services</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="#newsletter" aria-label="Jump to newsletter">
+            <span class="dot" aria-hidden="true"></span>
+            Subscribe
+          </a>
+          <a class="btn primary" href="#contact" aria-label="Jump to contact form">
+            Get in touch →
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <span class="badge">
+              <span class="pulse" aria-hidden="true"></span>
+              Live tech insights • guides • reviews
+            </span>
+
+            <h1>Welcome to <span style="background:linear-gradient(135deg,var(--brand),var(--brand2)); -webkit-background-clip:text; background-clip:text; color:transparent;">TechLiveGen</span>.</h1>
+
+            <p class="lead">
+              TechLiveGen is your modern hub for fresh technology updates, practical tutorials, product comparisons,
+              and real-world digital guidance — designed to be fast, clear, and useful.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#features">Explore features →</a>
+              <a class="btn" href="#about">Learn more</a>
+            </div>
+
+            <div class="stats" aria-label="Site highlights">
+              <span class="chip"><strong>Weekly</strong> guides & explainers</span>
+              <span class="chip"><strong>Honest</strong> reviews & comparisons</span>
+              <span class="chip"><strong>Actionable</strong> tech tips</span>
+            </div>
+          </div>
+
+          <aside class="card" aria-label="Highlights card">
+            <div class="card-head">
+              <h3>What’s inside</h3>
+              <span class="tag">techlivegen.net</span>
+            </div>
+            <div class="card-body">
+              <div class="mini">
+                <div class="mini-item">
+                  <div class="icon" aria-hidden="true">⚡</div>
+                  <div>
+                    <h4>Fast, readable content</h4>
+                    <p>Short, practical articles with the key steps up front.</p>
+                  </div>
+                </div>
+
+                <div class="mini-item">
+                  <div class="icon" aria-hidden="true">🧠</div>
+                  <div>
+                    <h4>Real learning, not fluff</h4>
+                    <p>Clear explanations that help you understand and apply.</p>
+                  </div>
+                </div>
+
+                <div class="mini-item">
+                  <div class="icon" aria-hidden="true">🛡️</div>
+                  <div>
+                    <h4>Security + privacy tips</h4>
+                    <p>Simple best practices to stay safer online.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="small">
+                Tip: Replace placeholder links with your real pages (e.g., /blog, /reviews) when you add them.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>About TechLiveGen</h2>
+          <p>We help you keep up — and actually use the tech.</p>
+        </div>
+
+        <div class="panel">
+          <p>
+            <strong>TechLiveGen.net</strong> focuses on modern technology with a practical angle:
+            step-by-step tutorials, trustworthy comparisons, productivity workflows, and updates that matter.
+            The goal is simple — give you clarity, not confusion.
+          </p>
+          <div class="meta">
+            <span class="pill">Tech news</span>
+            <span class="pill">How-to guides</span>
+            <span class="pill">Reviews</span>
+            <span class="pill">AI & automation</span>
+            <span class="pill">Cyber safety</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Features</h2>
+          <p>Everything a tech audience wants in one place.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="panel">
+            <h3>Guides & Tutorials</h3>
+            <p>Beginner-friendly and advanced walkthroughs with real outcomes.</p>
+            <div class="meta">
+              <span class="pill">Step-by-step</span>
+              <span class="pill">Screenshots-ready</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Reviews & Comparisons</h3>
+            <p>Clear pros/cons so you can decide quickly and confidently.</p>
+            <div class="meta">
+              <span class="pill">Pros/cons</span>
+              <span class="pill">Best picks</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Live Updates</h3>
+            <p>Trends, launches, and changes — summarized in plain language.</p>
+            <div class="meta">
+              <span class="pill">Curated</span>
+              <span class="pill">No noise</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Optional offerings you can promote on day one.</p>
+        </div>
+
+        <div class="split">
+          <div class="panel">
+            <h3>Tech Consulting</h3>
+            <p>Setup help, troubleshooting, and recommendations for your workflow or business.</p>
+            <div class="meta">
+              <span class="pill">Remote support</span>
+              <span class="pill">Device setup</span>
+              <span class="pill">Tool selection</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Content & Partnerships</h3>
+            <p>Sponsored posts, product testing, and partnership opportunities (transparent and ethical).</p>
+            <div class="meta">
+              <span class="pill">Sponsorships</span>
+              <span class="pill">Affiliate-ready</span>
+              <span class="pill">Media kit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Newsletter</h2>
+          <p>Get top stories and tips — no spam.</p>
+        </div>
+
+        <div class="panel">
+          <p style="margin:0 0 10px; color: var(--muted);">
+            Add your email to receive weekly highlights, practical tools, and new guides.
+          </p>
+
+          <!-- Replace action="#" with your mailing list provider endpoint -->
+          <form action="#" method="post" onsubmit="return handleSubscribe(event)">
+            <input id="subEmail" name="email" type="email" placeholder="Enter your email" required />
+            <button class="btn primary" type="submit">Subscribe</button>
+          </form>
+
+          <p class="small" id="subMsg" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Send a message — we’ll reply soon.</p>
+        </div>
+
+        <div class="panel">
+          <!-- Replace action="#" with your form handler endpoint -->
+          <form action="#" method="post" onsubmit="return handleContact(event)">
+            <input name="name" type="text" placeholder="Your name" required />
+            <input name="email" type="email" placeholder="Your email" required />
+            <input name="subject" type="text" placeholder="Subject" required />
+            <textarea name="message" placeholder="Write your message..." required></textarea>
+            <button class="btn primary" type="submit">Send message</button>
+            <button class="btn" type="reset">Reset</button>
+          </form>
+
+          <p class="small" id="contactMsg" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="logo" aria-hidden="true" style="width:30px;height:30px;border-radius:12px;"></span>
+          <div>
+            <div style="font-weight:800; color: rgba(255,255,255,.85);">TechLiveGen.net</div>
+            <div style="font-size:12px; color: rgba(255,255,255,.55);">Live tech insights • guides • reviews</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap: 14px; flex-wrap: wrap;">
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#services">Services</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div style="font-size:12px;">
+          © <span id="year"></span> TechLiveGen. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function handleSubscribe(e){
+      e.preventDefault();
+      const email = document.getElementById("subEmail").value.trim();
+      const msg = document.getElementById("subMsg");
+
+      // Demo-only behavior. Replace with real submit (fetch/post) when you connect a newsletter provider.
+      if(!email){
+        msg.textContent = "Please enter your email.";
+        return false;
+      }
+      msg.textContent = "Thanks! You’re subscribed (demo). Connect your email provider to make this live.";
+      e.target.reset();
+      return false;
+    }
+
+    function handleContact(e){
+      e.preventDefault();
+      const msg = document.getElementById("contactMsg");
+      // Demo-only. Replace with your backend or form service.
+      msg.textContent = "Message sent (demo). Connect a form endpoint to receive messages.";
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
